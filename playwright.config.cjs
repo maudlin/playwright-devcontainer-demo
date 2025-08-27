@@ -4,7 +4,7 @@ const path = require('node:path');
 
 module.exports = defineConfig({
   testDir: path.join(__dirname, 'tests'),
-  testMatch: /.*\.spec\.(ts|js)/,
+  // default testMatch is fine; your *.spec.ts files already match
   reporter: [
     ['list'],
     [ path.join(__dirname, 'manual-csv-reporter.cjs') ]
@@ -16,6 +16,6 @@ module.exports = defineConfig({
   },
   projects: [
     { name: 'Edge', use: { browserName: 'chromium', channel: 'msedge' } },
-    // { name: 'chromium', use: { browserName: 'chromium' } } // keep for later
+    // { name: 'chromium', use: { browserName: 'chromium' } }
   ]
 });

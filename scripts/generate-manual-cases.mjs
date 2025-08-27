@@ -14,7 +14,7 @@ import { stringify } from "csv-stringify/sync";
 const [,, inputPathArg] = process.argv;
 const inputPath = inputPathArg || "test-results/manual-tests.csv";
 const csvIn = fs.readFileSync(inputPath, "utf8");
-const rows = parse(csvIn, { columns: true, skip_empty_lines: true });
+const rows = parse(csvIn, { columns: true, skip_empty_lines: true, bom: true });
 
 const clean = (s = "") => String(s).replace(/""/g, '"').trim();
 const preferManual = r => clean(r["Manual Step (AI)"]) || clean(r["Manual Step"]) || clean(r["Raw Step"]);
@@ -108,4 +108,4 @@ for (const [testName, steps] of groups.entries()) {
 const outCsv = stringify(out, { header: true });
 const outPath = path.join(path.dirname(inputPath), "manual-tests.cases.csv");
 fs.writeFileSync(outPath, '\uFEFF' + outCsv, "utf8");
-console.log(`Wrote manual test cases → ${outPath}`);
+console.log(`Wrote manual test cases - ${outPath}`);

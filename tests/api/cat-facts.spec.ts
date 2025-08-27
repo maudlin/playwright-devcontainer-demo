@@ -13,7 +13,7 @@ type BreedsResponse = {
 test.describe('Cat Facts API', () => {
   const BASE = 'https://catfact.ninja';
 
-  test('GET /fact → single random fact with correct length', async ({ request }) => {
+  test('GET /fact - single random fact with correct length', async ({ request }) => {
     const res = await test.step('Request a random cat fact', async () => {
       const r = await request.get(`${BASE}/fact`);
       expect(r.ok(), `HTTP ${r.status()}`).toBeTruthy();
@@ -33,7 +33,7 @@ test.describe('Cat Facts API', () => {
     });
   });
 
-  test('GET /facts?limit=3 → list of facts, each well-formed', async ({ request }) => {
+  test('GET /facts?limit=3 - list of facts, each well-formed', async ({ request }) => {
     const res = await test.step('Request a list of 3 facts', async () => {
       const r = await request.get(`${BASE}/facts`, { params: { limit: 3 } });
       expect(r.ok(), `HTTP ${r.status()}`).toBeTruthy();
@@ -61,7 +61,7 @@ test.describe('Cat Facts API', () => {
     });
   });
 
-  test('GET /breeds?limit=2 → breed objects with expected fields', async ({ request }) => {
+  test('GET /breeds?limit=2 - breed objects with expected fields', async ({ request }) => {
     const res = await test.step('Request 2 breeds', async () => {
       const r = await request.get(`${BASE}/breeds`, { params: { limit: 2 } });
       expect(r.ok(), `HTTP ${r.status()}`).toBeTruthy();

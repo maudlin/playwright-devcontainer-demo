@@ -61,7 +61,9 @@ class ManualCsvReporter {
     const lines = this.rows.map(r =>
       [r.testTitle, String(r.stepIndex), r.rawStep, r.manualStep, r.category, r.testStatus].map(csvEscape).join(",")
     );
-    fs.writeFileSync(csvPath, '\uFEFF' + [header, ...lines].join("\n"), "utf8");
+    const content = [header, ...lines].join('\n');
+    const withBom = process.env.CSV_BOM === '1' ? '\uFEFF' + content : content;
+    fs.writeFileSync(csvPath, withBom, 'utf8');
     console.log(`\nWrote ${this.rows.length} step(s) to ${csvPath}`);
   }
 

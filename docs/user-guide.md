@@ -7,7 +7,7 @@
 - A manual test case table (Action ↔ Expected) auto-generated from those steps.
 ~
 ## Why it’s faster for you
-- Record once → publish twice. One walkthrough produces both automation and a manual script—no retyping selectors or steps.
+- Record once - publish twice. One walkthrough produces both automation and a manual script—no retyping selectors or steps.
 - Assertions auto-pair with actions. “Verify …” lines match the previous action, giving you an instant Expected Result column.
 - Readable locators, less flakiness. Recorder prefers getByRole/labels that align with UI copy and survive CSS churn.
 - Versioned test assets. Steps live in git next to product code: diffable, reviewable, traceable to requirements.

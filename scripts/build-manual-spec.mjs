@@ -67,7 +67,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`\n✅ Manual spec ready → ${casesCsv}`);
+  console.log(`\n✅ Manual spec ready - ${casesCsv}`);
   console.log(`   (Source: ${path.basename(inputForCases)})\n`);
   process.exit(code); // propagate overall success/failure if you want CI to fail when tests fail
 }

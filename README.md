@@ -1,4 +1,4 @@
-﻿# Playwright in a Dev Container (record → run → export CSV → AI polish)
+﻿# Playwright in a Dev Container (record - run - export CSV - AI polish)
 
 ## Quick start (VS Code)
 
@@ -20,7 +20,7 @@
 ## Recording a test (two options)
 
 - **VS Code extension**  
-  Open the **Playwright** view (left Activity Bar) → **Record New** → point to your app and click around. It will create a `*.spec.ts`.
+  Open the **Playwright** view (left Activity Bar) - **Record New** - point to your app and click around. It will create a `*.spec.ts`.
 
 - **CLI**  
   `npm run record -- https://example.com`  
@@ -33,7 +33,7 @@
 The custom reporter captures user-visible actions/expectations:
 - Categories included: Playwright API steps (`pw:api`), `expect` assertions, and your `test.step` blocks.
 - Output columns: `Test Name, Step #, Raw Step, Manual Step, Category`
-- The **Manual Step** column lightly normalizes common verbs (`goto` → `Navigate to`, `click` → `Click`, `expect` → `Verify ...`).
+- The **Manual Step** column lightly normalizes common verbs (`goto` - `Navigate to`, `click` - `Click`, `expect` - `Verify ...`).
 
 ## AI polishing
 

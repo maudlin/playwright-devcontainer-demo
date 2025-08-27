@@ -26,7 +26,7 @@ const base = process.env.LLM_BASE_URL || "https://api.openai.com/v1";
 const model = process.env.LLM_MODEL || "gpt-4o-mini";
 
 const csv = fs.readFileSync(inputPath, "utf8");
-const rows = parse(csv, { columns: true, skip_empty_lines: true });
+const rows = parse(csv, { columns: true, skip_empty_lines: true, bom: true });
 
 const items = rows.map(r => ({ raw: r["Raw Step"] ?? "", manual: r["Manual Step"] ?? "", category: r["Category"] ?? "" }));
 
@@ -97,7 +97,7 @@ function rulePolish(s) {
   t = t.replace(/^Verify\s+"toHaveTitle"$/i, "Verify the page title is correct");
   t = t.replace(/^Verify\s+"toHaveURL"$/i, "Verify the current URL is correct");
   t = t.replace(/^Navigate to\s+iana\.org$/i, "Navigate to IANA");
-  // Normalize double-double-quotes → single double-quotes
+  // Normalize double-double-quotes - single double-quotes
   t = t.replace(/""/g, '"');
   return t;
 }
@@ -119,4 +119,4 @@ const outRows = rows.map((r, i) => ({
 const outCsv = stringify(outRows, { header: true });
 const outPath = inputPath.replace(/\.csv$/, ".polished.csv");
 fs.writeFileSync(outPath, outCsv, "utf8");
-console.log(`Wrote polished CSV → ${outPath}`);
+console.log(`Wrote polished CSV - ${outPath}`);
