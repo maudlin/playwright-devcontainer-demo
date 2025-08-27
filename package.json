@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "playwright-devcontainer-demo",
   "version": "1.0.0",
   "private": true,
@@ -9,11 +9,12 @@
     "record": "playwright codegen",
     "csv": "playwright test --reporter=list,./manual-csv-reporter.cjs",
     "ai:polish": "node scripts/ai-polish.mjs test-results/manual-tests.csv",
-    "manual:cases": "node scripts/generate-manual-cases.mjs test-results/manual-tests.csv"
-
+    "manual:cases": "node scripts/generate-manual-cases.mjs test-results/manual-tests.csv",
+    "manual:build": "node scripts/build-manual-spec.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.47.2",
+    "@types/node": "^24.3.0",
     "csv-parse": "^5.5.6",
     "csv-stringify": "^6.5.2",
     "typescript": "^5.5.4"
