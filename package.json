@@ -8,7 +8,9 @@
     "test:ui": "playwright test --ui",
     "record": "playwright codegen",
     "csv": "playwright test --reporter=list,./manual-csv-reporter.cjs",
-    "ai:polish": "node scripts/ai-polish.mjs test-results/manual-tests.csv"
+    "ai:polish": "node scripts/ai-polish.mjs test-results/manual-tests.csv",
+    "manual:cases": "node scripts/generate-manual-cases.mjs test-results/manual-tests.csv"
+
   },
   "devDependencies": {
     "@playwright/test": "^1.47.2",

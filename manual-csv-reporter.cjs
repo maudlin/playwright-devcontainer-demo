@@ -27,8 +27,13 @@ class ManualCsvReporter {
     this.current.set(test.id, []);
   }
   onStepEnd(test, _result, step) {
-    const include = ["pw:api", "expect", "test.step"].includes(step.category || "pw:api");
-    if (!include) return;
+  // Ignore framework hooks and noisy plumbing
+  if (step.category === 'hook') return;
+  const noisy = /^(Launch browser|Create context|Create page|Close context|Close browser)$/i;
+  if (noisy.test(step.title || '')) return;
+
+  const include = ['pw:api', 'expect', 'test.step'].includes(step.category || 'pw:api');
+  if (!include) return;
     const bucket = this.current.get(test.id);
     if (!bucket) return;
     const raw = step.title || "";
@@ -52,7 +57,7 @@ class ManualCsvReporter {
     const header = ["Test Name","Step #","Raw Step","Manual Step","Category"].map(csvEscape).join(",");
     const lines = this.rows.map(r => [r.testTitle, String(r.stepIndex), r.rawStep, r.manualStep, r.category].map(csvEscape).join(","));
     fs.writeFileSync(csvPath, [header, ...lines].join("\n"), "utf8");
-    console.log(`\nWrote ${this.rows.length} step(s) â†’ ${csvPath}`);
+    console.log(`\nWrote ${this.rows.length} step(s) to ${csvPath}`);
   }
   printsToStdio() { return false; }
 }
