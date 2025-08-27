@@ -1,0 +1,15 @@
+﻿{
+  "name": "Playwright E2E + CSV exporter",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-playwright.playwright",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "remoteUser": "node",
+  "postCreateCommand": "npm install && npx playwright install --with-deps",
+  "waitFor": "postCreateCommand"
+}
