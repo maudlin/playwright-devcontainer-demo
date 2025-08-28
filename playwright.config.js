@@ -1,8 +1,11 @@
-﻿// playwright.config.cjs
-const { defineConfig } = require('@playwright/test');
-const path = require('node:path');
+// playwright.config.js
+import { defineConfig } from '@playwright/test';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-module.exports = defineConfig({
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
   testDir: path.join(__dirname, 'tests'),
   // default testMatch is fine; your *.spec.ts files already match
   reporter: [
