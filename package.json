@@ -7,10 +7,8 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "record": "playwright codegen",
-    "csv": "playwright test --reporter=list,./manual-csv-reporter.cjs",
-    "ai:polish": "node scripts/ai-polish.mjs test-results/manual-tests.csv",
-    "manual:cases": "node scripts/generate-manual-cases.mjs test-results/manual-tests.csv",
-    "manual:build": "node scripts/build-manual-spec.mjs"
+    "manual:smart": "playwright test --reporter=list,./manual-csv-reporter.cjs && node scripts/smart-manual-generator.mjs test-results/manual-tests.csv",
+    "csv": "playwright test --reporter=list,./manual-csv-reporter.cjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
